@@ -61,7 +61,6 @@ export const getEnabledVoteFromDb = async (): Promise<IResponseBack> => {
     }
    }
   );
-  console.log(`Get enabled vote with : ${enabledVote.title}`)
   return { flag: true, data: enabledVote };
  } catch (err) {
   console.error("Get enabled vote failed, error : ", (err as PrismaClientKnownRequestError).message);

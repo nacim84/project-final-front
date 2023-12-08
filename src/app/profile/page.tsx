@@ -23,7 +23,7 @@ const ProfilePage = async () => {
       </p>
 
       <div className="flex flex-col md:flex-row-reverse items-start justify-center gap-10">
-        {enabledVote && enabledVote.flag ?
+        {enabledVote.data && enabledVote.flag ?
           <CommonProfile enabledVote={enabledVote.data as IVote} />
           :
           <CommonProfileTallyVote />

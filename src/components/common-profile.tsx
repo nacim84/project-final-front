@@ -13,7 +13,7 @@ import { useToast } from './ui/use-toast';
 import Image from "next/image";
 import { CommonGetters } from './common-getters';
 import { IVote } from '@/models/common.model';
-import { convertToDate, decryptAES, encryptAES } from '@/lib/utils';
+import { decryptAES, encryptAES } from '@/lib/utils';
 
 interface CommonProfileProps {
   enabledVote: IVote;
@@ -22,9 +22,6 @@ interface CommonProfileProps {
 export const CommonProfile = ({ enabledVote }: CommonProfileProps) => {
   const client = usePublicClient();
   const { toast } = useToast();
-
-
-  // Get enabled vote
 
   const voteChoiceHandler = async (choice: string) => {
     try {
