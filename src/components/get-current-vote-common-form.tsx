@@ -9,12 +9,14 @@ import { useState } from "react"
 import { contractAddress, resolutionsVotingAbi } from "@/constants/common.constants"
 import { IVoteContract } from "@/models/common.model"
 import { convertToDate } from "@/lib/utils";
+import { useAccount } from "wagmi";
 
 export const GetCurrentVoteCommonForm = () => {
 
  const [foundVote, setFoundVote] = useState<IVoteContract | null>(null);
  const [pending, isPending] = useState<boolean>(false);
  const { toast } = useToast();
+ const account = useAccount();
 
  const getCurrentVoteHandler = async () => {
   try {
@@ -23,6 +25,7 @@ export const GetCurrentVoteCommonForm = () => {
     address: contractAddress as `0x${string}`,
     abi: resolutionsVotingAbi,
     functionName: 'getCurrentVote',
+    account: account.address
    });
 
    const foundVote = vote as IVoteContract;

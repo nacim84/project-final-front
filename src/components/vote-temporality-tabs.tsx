@@ -3,7 +3,6 @@ import React from 'react'
 import { UseFormReturn } from 'react-hook-form';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
 import { PlannedVote } from './planned-vote';
-import { LiveVote } from './live-vote';
 
 interface VoteTemporalityProps {
  formVote: UseFormReturn<TVoteSchema, any, undefined>;

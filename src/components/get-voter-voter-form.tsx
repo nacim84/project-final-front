@@ -20,12 +20,13 @@ import { readContract } from '@wagmi/core';
 import { useState } from "react"
 import { contractAddress, resolutionsVotingAbi } from "@/constants/common.constants"
 import { IVoterContract } from "@/models/common.model"
+import { useAccount } from "wagmi"
 
 export const GetVoterVoterForm = () => {
 
  const [foundVoter, setFoundVoter] = useState<IVoterContract | null>(null);
  const [pending, isPending] = useState<boolean>(false);
-
+ const account = useAccount();
  const { toast } = useToast();
 
  const getRegisteredVoterForVoterHandler = async () => {
@@ -34,7 +35,8 @@ export const GetVoterVoterForm = () => {
    const voter = await readContract({
     address: contractAddress as `0x${string}`,
     abi: resolutionsVotingAbi,
-    functionName: 'getRegisteredVoterForVoter'
+    functionName: 'getRegisteredVoterForVoter',
+    account: account.address,
    });
 
    const foundVoter = voter as IVoterContract;

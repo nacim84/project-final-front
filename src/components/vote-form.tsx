@@ -15,18 +15,18 @@ import { TVoteSchema, voteFormResolver } from '@/models/common.schema';
 import { Textarea } from './ui/textarea';
 import { VoteTemporality } from './vote-temporality-tabs';
 import { VoteTypesMenu } from './vote-types-menu';
-import { usePublicClient } from 'wagmi';
+import { useAccount, usePublicClient } from 'wagmi';
 import { prepareWriteContract, writeContract, waitForTransaction } from '@wagmi/core';
 import { VoteCreatedActivatedEvent, contractAddress, profilePath, resolutionsVotingAbi } from '@/constants/common.constants';
 import { BlockTag, keccak256, parseAbiItem, toHex } from 'viem';
 import { addVoteToDb } from '@/server-actions/votes';
 import { useRouter } from 'next/navigation';
-import { decryptAES, encryptAES } from '@/lib/utils';
 
 export const VoteForm = () => {
   const client = usePublicClient();
   const { toast } = useToast();
   const router = useRouter();
+  const account = useAccount();
 
   const formVote = useForm<TVoteSchema>({
     resolver: voteFormResolver,

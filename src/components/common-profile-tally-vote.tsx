@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { VotedEvent, adminVotePath, contractAddress, reportPath, resolutionsVotingAbi } from '@/constants/common.constants';
 import { CommonGetters } from './common-getters';
 import { useSession } from 'next-auth/react';
-import { usePublicClient } from 'wagmi';
+import { useAccount, usePublicClient } from 'wagmi';
 import { BlockTag, parseAbiItem } from 'viem';
 import { useEffect, useState } from 'react';
 import { decryptAES } from '@/lib/utils';
@@ -20,13 +20,15 @@ export const CommonProfileTallyVote = () => {
   const [tallyVoteContre, setTallyVoteContre] = useState<string[]>([]);
   const [tallyVoteAbstention, setTallyVoteAbstention] = useState<string[]>([]);
   const [foundVoteId, setFoundVoteId] = useState<number>(0);
+  const account = useAccount();
 
   const getVoteId = async () => {
     try {
       const voteId = await readContract({
         address: contractAddress as `0x${string}`,
         abi: resolutionsVotingAbi,
-        functionName: 'voteId'
+        functionName: 'voteId',
+        account: account.address
       });
       setFoundVoteId(Number(voteId));
     } catch (err) {

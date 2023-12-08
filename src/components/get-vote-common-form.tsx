@@ -20,6 +20,7 @@ import { useState } from "react"
 import { contractAddress, resolutionsVotingAbi } from "@/constants/common.constants"
 import { IVoteContract } from "@/models/common.model"
 import { convertToDate } from "@/lib/utils"
+import { useAccount } from "wagmi"
 
 const formSchema = z.object({
  voteId: z.number().min(1, {
@@ -38,6 +39,7 @@ export const GetVoteCommonForm = () => {
  });
  const pending = form.formState.isSubmitting;
  const { toast } = useToast();
+ const account = useAccount();
 
  const getVoteByIdVoteHandler = async (values: z.infer<typeof formSchema>) => {
   try {
@@ -45,6 +47,7 @@ export const GetVoteCommonForm = () => {
     address: contractAddress as `0x${string}`,
     abi: resolutionsVotingAbi,
     functionName: 'getVote',
+    account: account.address,
     args: [BigInt(values.voteId)]
    });
 

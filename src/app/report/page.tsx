@@ -5,12 +5,13 @@ import { VoteCompletedEvent, VoteCreatedActivatedEvent, VotedEvent, VoterRegiste
 import { TEventSignature } from '@/models/common.model';
 import React, { useEffect, useState } from 'react';
 import { BlockTag, parseAbiItem } from 'viem';
-import { usePublicClient } from 'wagmi';
+import { useAccount, usePublicClient } from 'wagmi';
 
 const GlobalReportPage = () => {
 
   const client = usePublicClient();
   const [logs, setLogs] = useState<any[][]>([]);
+  const account = useAccount();
 
   const getAllEventsHandler = async () => {
     // VoteCreatedActivatedEvent;          // 0

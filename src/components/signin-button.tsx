@@ -10,8 +10,6 @@ import { authSignInPath } from '@/constants/common.constants';
 const SigninButton = () => {
 
  const path = usePathname();
-
- console.log("path : " + path);
  return (
   <>
    {path !== authSignInPath ?

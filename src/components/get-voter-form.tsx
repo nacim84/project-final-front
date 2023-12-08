@@ -19,6 +19,7 @@ import { readContract } from '@wagmi/core';
 import { useState } from "react"
 import { contractAddress, resolutionsVotingAbi } from "@/constants/common.constants"
 import { IVoterContract } from "@/models/common.model"
+import { useAccount } from "wagmi"
 
 const formSchema = z.object({
  voterAddress: z.string().min(42, {
@@ -37,6 +38,7 @@ export const GetVoterForm = () => {
  });
  const pending = form.formState.isSubmitting;
  const { toast } = useToast();
+ const account = useAccount();
 
  const getRegisteredVoterHandler = async (values: z.infer<typeof formSchema>) => {
   try {
@@ -44,6 +46,7 @@ export const GetVoterForm = () => {
     address: contractAddress as `0x${string}`,
     abi: resolutionsVotingAbi,
     functionName: 'getRegisteredVoter',
+    account: account.address,
     args: [values.voterAddress as `0x${string}`]
    });
 

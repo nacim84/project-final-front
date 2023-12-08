@@ -1,6 +1,6 @@
 "use client"
 
-import { getCsrfToken, signIn, useSession } from "next-auth/react";
+import { getCsrfToken, signIn } from "next-auth/react";
 import { SiweMessage } from "siwe";
 import { useAccount, useNetwork, useSignMessage } from "wagmi";
 import { useEffect, useState } from "react";
@@ -8,14 +8,8 @@ import { useWeb3Modal } from "@web3modal/wagmi/react";
 import { ButtonWithPending } from "@/components/ui/button-with-pending";
 import { cn } from "@/lib/utils";
 import { useSearchParams } from "next/navigation";
-import { useToast } from "@/components/ui/use-toast";
-import SuccessIcon from "../../../../public/svg/success-icon.svg";
-import FailureIcon from "../../../../public/svg/failure-icon.svg";
-import Image from "next/image";
 
 export default function SignInPage() {
-  const { data: session } = useSession();
-  console.log("Session : " + JSON.stringify(session))
   const [mounted, setMounted] = useState(false);
   const { address, isConnecting, isConnected } = useAccount();
   const { chain } = useNetwork();
@@ -23,7 +17,6 @@ export default function SignInPage() {
   const [hasSigned, setHasSigned] = useState(false);
   const { open } = useWeb3Modal();
   const searchParams = useSearchParams();
-  const { toast } = useToast();
 
   useEffect(() => setMounted(true), []);
 
