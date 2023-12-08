@@ -15,7 +15,7 @@ import { TVoteSchema, voteFormResolver } from '@/models/common.schema';
 import { Textarea } from './ui/textarea';
 import { VoteTemporality } from './vote-temporality-tabs';
 import { VoteTypesMenu } from './vote-types-menu';
-import { useAccount, usePublicClient } from 'wagmi';
+import { usePublicClient } from 'wagmi';
 import { prepareWriteContract, writeContract, waitForTransaction } from '@wagmi/core';
 import { VoteCreatedActivatedEvent, contractAddress, profilePath, resolutionsVotingAbi } from '@/constants/common.constants';
 import { BlockTag, keccak256, parseAbiItem, toHex } from 'viem';
@@ -26,7 +26,6 @@ export const VoteForm = () => {
   const client = usePublicClient();
   const { toast } = useToast();
   const router = useRouter();
-  const account = useAccount();
 
   const formVote = useForm<TVoteSchema>({
     resolver: voteFormResolver,
@@ -107,7 +106,7 @@ export const VoteForm = () => {
           createNewVoteHandler
         )}
       >
-        <Card className="space-y-6 h-full bg-violet-200/80 dark:bg-violet-900/20 w-[40vw] min-h-[10vh] p-6 rounded-lg shadow-lg">
+        <Card className="space-y-6 h-full bg-primary-foreground w-[40vw] min-h-[10vh] p-6 rounded-lg shadow-lg">
           <FormField
             control={formVote.control}
             name="voteTemporality"

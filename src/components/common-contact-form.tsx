@@ -51,7 +51,7 @@ export const CommonContactForm = () => {
           sendEmailHandler
         )}
       >
-        <Card className="space-y-6 w-full h-full bg-violet-200/80 dark:bg-violet-900/20 min-w-[40vw] min-h-[10vw] p-6 rounded-lg shadow-lg">
+        <Card className="space-y-6 w-full h-full bg-primary-foreground min-w-[40vw] min-h-[10vw] p-6 rounded-lg shadow-lg">
           <FormField
             control={formContact.control}
             name="receiverEmail"

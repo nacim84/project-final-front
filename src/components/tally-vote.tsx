@@ -86,7 +86,7 @@ export const TallyVote = () => {
     onClick={tallyVoteHandler}
     className='w-full space-x-24 rounded-full transition duration-150'>
     <div className='flex items-center justify-between w-full'>
-     <span className='text-base'>Tally Votes</span>
+     <span className='text-base'>Dépouillement des votes</span>
      <PartyPopper className='h-8 w-8' />
     </div>
    </ButtonWithPending>

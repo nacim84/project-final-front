@@ -80,7 +80,7 @@ export const CommonProfile = ({ enabledVote }: CommonProfileProps) => {
   return (
     <div className='flex flex-col gap-10 w-full'>
       <CommonGetters />
-      <Card className="space-y-6 w-full h-full bg-violet-200/80 dark:bg-violet-900/20 min-w-[80vw] p-10 rounded-lg shadow-lg">
+      <Card className="space-y-6 w-full h-full bg-primary-foreground min-w-[80vw] p-10 rounded-lg shadow-lg">
         <div className='flex flex-col items-center justify-center mx-auto gap-16'>
           <div className='flex flex-col gap-1 items-center justify-center'>
             <h1 className='text-2xl font-semibold'>Referendum municipale</h1>

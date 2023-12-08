@@ -84,7 +84,7 @@ export const CommonProfileTallyVote = () => {
   return (
     <div className='flex flex-col gap-10 w-full'>
       <CommonGetters />
-      <Card className="space-y-6 w-full h-full bg-violet-200/80 dark:bg-violet-900/20 min-w-[80vw] min-h-max p-10 rounded-lg shadow-lg">
+      <Card className="space-y-6 w-full h-full bg-primary-foreground min-w-[80vw] min-h-max p-10 rounded-lg shadow-lg">
         <div className='flex flex-col items-center justify-center mx-auto gap-16'>
           <div className='flex flex-col gap-20'>
             <p className='flex flex-col items-center justify-center text-lg italic font-normal'>

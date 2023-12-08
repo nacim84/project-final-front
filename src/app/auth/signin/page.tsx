@@ -68,7 +68,7 @@ export default function SignInPage() {
         <div className="flex flex-col items-center justify-center gap-6">
           <h3 className='text-2xl font-semibold'>Authentifiez-vous</h3>
           <div className="flex flex-col items-center justify-center max-w-3xl">
-            <ul className="space-y-10 list-none bg-violet-200/80 dark:bg-violet-900/40 min-w-[30vw] min-h-[10vw] p-10 rounded-lg shadow-lg">
+            <ul className="space-y-10 list-none bg-primary-foreground min-w-[30vw] min-h-[10vw] p-10 rounded-lg shadow-lg">
               <li className="flex bg-white p-2 rounded-full items-center justify-end w-[500px]">
                 {isConnected && <span className="text-sm text-primary truncate max-w-[380px] italic font-semibold">Address : {address}</span>}
                 <ButtonWithPending

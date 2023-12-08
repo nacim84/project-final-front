@@ -16,7 +16,7 @@ export const VoteTemporality = ({ formVote }: VoteTemporalityProps) => {
     <TabsTrigger className='w-full' value="planned">Vote programmé</TabsTrigger>
    </TabsList>
    <TabsContent value="live">
-    <span className='text-sm italic text-gray-800 dark:text-gray-400'>Le vote en &quot;Live&quot;, vous trouverez les bouttons d&apos;administration du vote, dans la page de votre profile.</span>
+    <span className='text-sm italic text-primary'>Le vote en &quot;Live&quot;, vous trouverez les bouttons d&apos;administration du vote, dans la page de votre profile.</span>
    </TabsContent>
    <TabsContent value="planned">
     <PlannedVote formVote={formVote} />

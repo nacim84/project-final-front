@@ -23,7 +23,7 @@ export const CommonDialog = ({ component, text, title, disabled, icon, size, var
         <Button size={size} variant={variant!} disabled={disabled} className='flex items-center justify-between rounded-full'><span className='text-base'>{text}</span>{icon}</Button>
         :
         <DialogTrigger asChild>
-          <Button size={size} variant={variant!} className='flex items-center justify-between rounded-full'><span className='text-base'>{text}</span>{icon}</Button>
+          <Button size={size} variant={variant!} className='font-semibold w-full flex items-center justify-between rounded-full'><span className='text-base'>{text}</span>{icon}</Button>
         </DialogTrigger>
       }
       <DialogContent className={className}>
