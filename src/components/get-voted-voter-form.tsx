@@ -94,15 +94,15 @@ export const GetVotedVoterForm = () => {
        </FormItem>
       )}
      />
-     <ButtonWithPending size="sm" disabled={pending} className="w-full bg-fuchsia-400/40 rounded-full transition duration-150 hover:bg-fuchsia-300/40" pending={pending}>Submit</ButtonWithPending>
+     <ButtonWithPending size="sm" disabled={pending} className="w-full bg-primary-400/40 rounded-full transition duration-150 hover:bg-primary-300/40" pending={pending}>Submit</ButtonWithPending>
     </form>
    </Form>
    {
     foundVoter
     &&
     <div className="text-white text-base flex flex-col items-start justify-center">
-     <span>HasVoted: <strong className="text-fuchsia-300">{String(foundVoter.hasVoted)}</strong></span>
-     <span>VoteChoice: <strong className="text-fuchsia-300">{foundVoter.voteChoice ? String(foundVoter.voteChoice) : "Not yet."}</strong></span>
+     <span>HasVoted: <strong className="text-primary-300">{String(foundVoter.hasVoted)}</strong></span>
+     <span>VoteChoice: <strong className="text-primary-300">{foundVoter.voteChoice ? String(foundVoter.voteChoice) : "Not yet."}</strong></span>
     </div>
    }
   </div>

@@ -79,17 +79,17 @@ export const GetVoteCommonForm = () => {
        </FormItem>
       )}
      />
-     <ButtonWithPending size="sm" disabled={pending} className="w-full bg-fuchsia-400/40 rounded-full transition duration-150 hover:bg-fuchsia-300/40" pending={pending}>Submit</ButtonWithPending>
+     <ButtonWithPending size="sm" disabled={pending} variant="default" className="w-full rounded-full transition duration-150" pending={pending}>Submit</ButtonWithPending>
     </form>
    </Form>
    {
     foundVote
     &&
-    <div className="text-white text-base flex flex-col items-start justify-center">
+    <div className="text-base flex flex-col items-start justify-center">
      <p className="truncate max-w-[25vw]">HashDescription : <strong className="text-fuchsia-300">{String(foundVote.hashDescription)}</strong></p>
-     <span>StartDate: <strong className="text-fuchsia-300">{convertToDate(Number(foundVote.startDate))}</strong></span>
-     <span>EndDate: <strong className="text-fuchsia-300">{convertToDate(Number(foundVote.endDate))}</strong></span>
-     <span>IsEnabled: <strong className="text-fuchsia-300">{String(foundVote.isEnabled)}</strong></span>
+     <span>StartDate: <strong className="text-primary">{convertToDate(Number(foundVote.startDate))}</strong></span>
+     <span>EndDate: <strong className="text-primary">{convertToDate(Number(foundVote.endDate))}</strong></span>
+     <span>IsEnabled: <strong className="text-primary">{String(foundVote.isEnabled)}</strong></span>
     </div>
    }
   </div>

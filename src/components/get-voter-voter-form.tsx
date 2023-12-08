@@ -57,19 +57,20 @@ export const GetVoterVoterForm = () => {
   <div className="bg-transparent h-full w-full m-auto flex flex-col gap-10">
    <ButtonWithPending
     size="sm"
+    variant="default"
     disabled={pending}
-    className="w-full bg-fuchsia-400/40 rounded-full transition duration-150 hover:bg-fuchsia-300/40"
+    className="w-full rounded-full transition duration-150"
     pending={pending}
     onClick={getRegisteredVoterForVoterHandler}
-   >Vérifier ton vote</ButtonWithPending>
+   >Vérifier ton enregistrement</ButtonWithPending>
    {
     foundVoter
     &&
-    <div className="text-white text-base flex flex-col items-start justify-center">
-     <span>IsRegistered : <strong className="text-fuchsia-300">{String(foundVoter.isRegistered)}</strong></span>
-     <span>HasVoted: <strong className="text-fuchsia-300">{String(foundVoter.hasVoted)}</strong></span>
-     <span>Role: <strong className="text-fuchsia-300">{foundVoter.role ? "ADMIN" : "USER"}</strong></span>
-     <span>VoteChoice: <strong className="text-fuchsia-300">{foundVoter.voteChoice ? String(foundVoter.voteChoice) : "Not yet."}</strong></span>
+    <div className="text-base flex flex-col items-start justify-center">
+     <span>IsRegistered : <strong className="text-primary">{String(foundVoter.isRegistered)}</strong></span>
+     <span>HasVoted: <strong className="text-primary">{String(foundVoter.hasVoted)}</strong></span>
+     <span>Role: <strong className="text-primary">{foundVoter.role ? "ADMIN" : "USER"}</strong></span>
+     <span>VoteChoice: <strong className="text-primary">{foundVoter.voteChoice ? String(foundVoter.voteChoice) : "Not yet."}</strong></span>
     </div>
    }
   </div>

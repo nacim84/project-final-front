@@ -44,20 +44,20 @@ export const GetCurrentVoteCommonForm = () => {
 
  return (
   <div className="bg-transparent h-full w-full m-auto flex flex-col gap-10">
-
    <ButtonWithPending
     onClick={getCurrentVoteHandler}
     size="sm"
+    variant="default"
     disabled={pending}
-    className="w-full bg-fuchsia-400/40 rounded-full transition duration-150 hover:bg-fuchsia-300/40" pending={pending}>Get current vote</ButtonWithPending>
+    className="w-full rounded-full transition duration-150" pending={pending}>Consulter le vote en cours</ButtonWithPending>
    {
     foundVote
     &&
-    <div className="text-white text-base flex flex-col items-start justify-center">
-     <p className="truncate max-w-[25vw]">HashDescription : <strong className="text-fuchsia-300 max-w-[50px] truncate">{String(foundVote.hashDescription)}</strong></p>
-     <span>StartDate: <strong className="text-fuchsia-300">{convertToDate(Number(foundVote.startDate))}</strong></span>
-     <span>EndDate: <strong className="text-fuchsia-300">{convertToDate(Number(foundVote.endDate))}</strong></span>
-     <span>IsEnabled: <strong className="text-fuchsia-300">{String(foundVote.isEnabled)}</strong></span>
+    <div className="text-base flex flex-col items-start justify-center">
+     <p className="truncate max-w-[25vw]">HashDescription : <strong className="text-primary max-w-[50px] truncate">{String(foundVote.hashDescription)}</strong></p>
+     <span>StartDate: <strong className="text-primary">{convertToDate(Number(foundVote.startDate))}</strong></span>
+     <span>EndDate: <strong className="text-primary">{convertToDate(Number(foundVote.endDate))}</strong></span>
+     <span>IsEnabled: <strong className="text-primary">{String(foundVote.isEnabled)}</strong></span>
     </div>
    }
   </div>

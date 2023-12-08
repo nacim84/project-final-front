@@ -10,19 +10,28 @@ export default function HomePage() {
   <div className="w-full h-full">
    <div className="flex flex-col items-center h-full p-4 space-y-2">
     <div className="p-10 space-y-5 text-center">
-     <h5 className="text-5xl font-bold">
-      Welcome to Web3 Voting System App
-     </h5>
-     <p className="text-base text-gray-700 italic font-semibold">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum dicta
-      nostrum perspiciatis blanditiis? Deleniti officia neque ipsam
-      consequuntur quaerat reiciendis, consequatur sequi fuga aliquam
-      laudantium commodi ad amet illo tenetur.
+     <div className="space-y-4">
+      <h5 className="text-4xl font-bold">
+       Une nouvelle voie pour retrouver votre voix !
+      </h5>
+      <h2 className="text-xl font-semibold italic">
+       Le vote sécurisé par la blockchain
+      </h2>
+
+     </div>
+
+     <p className="space-y-2">
+      <h1 className="font-semibold">NOTRE AMBITION</h1>
+      <h1 className="italic">
+       Fournir une plateforme de vote en ligne entièrement automatisée et sécurisée
+       apportant un niveau de transparence inégalé.
+      </h1>
+
      </p>
     </div>
     <div className="mx-auto">
      <Link href="/profile" className={buttonVariants({ variant: "default", size: "default", className: "flex items-center justify-center gap-2 rounded-full font-semibold" })}>
-      <span>Getting started</span>
+      <span>Commencer</span>
       <MoveRight />
      </Link>
     </div>

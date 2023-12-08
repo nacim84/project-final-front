@@ -28,7 +28,7 @@ export const CommonDialog = ({ component, text, title, disabled, icon, size, var
       }
       <DialogContent className={className}>
         {title && <DialogHeader>
-          <DialogTitle className="text-white text-center">{title}</DialogTitle>
+          <DialogTitle className="text-center">{title}</DialogTitle>
         </DialogHeader>}
         {component}
       </DialogContent>
