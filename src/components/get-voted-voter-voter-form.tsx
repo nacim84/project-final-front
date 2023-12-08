@@ -72,7 +72,7 @@ export const GetVotedVoterVoterForm = () => {
       render={({ field }) => (
        <FormItem>
         <FormControl>
-         <Input placeholder="Vote id" className="rounded-lg" {...field} />
+         <Input placeholder="Vote id" type="number" className="rounded-lg" {...field} />
         </FormControl>
         <FormMessage />
        </FormItem>
