@@ -26,7 +26,7 @@ const ProfilePage = async () => {
         {enabledVote.data && enabledVote.flag ?
           <CommonProfile enabledVote={enabledVote.data as IVote} />
           :
-          <CommonProfileTallyVote />
+          <CommonProfileTallyVote enabledVote={enabledVote.data as IVote} />
         }
       </div>
     </div>

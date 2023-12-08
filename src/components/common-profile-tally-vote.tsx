@@ -12,8 +12,13 @@ import { BlockTag, parseAbiItem } from 'viem';
 import { useEffect, useState } from 'react';
 import { decryptAES } from '@/lib/utils';
 import { readContract } from '@wagmi/core';
+import { IVote } from '@/models/common.model';
 
-export const CommonProfileTallyVote = () => {
+interface CommonProfileTallyVoteProps {
+  enabledVote: IVote;
+}
+
+export const CommonProfileTallyVote = ({ enabledVote }: CommonProfileTallyVoteProps) => {
   const { data: session } = useSession();
   const client = usePublicClient();
   const [tallyVotePour, setTallyVotePour] = useState<string[]>([]);
@@ -30,7 +35,7 @@ export const CommonProfileTallyVote = () => {
         functionName: 'voteId',
         account: account.address
       });
-      setFoundVoteId(Number(voteId));
+      const hupdatedVite = setFoundVoteId(Number(voteId));
     } catch (err) {
       const error = err as Error;
       console.log(error.message)
@@ -89,7 +94,15 @@ export const CommonProfileTallyVote = () => {
           <div className='flex flex-col gap-20'>
             <p className='flex flex-col items-center justify-center text-lg italic font-normal'>
               <span>Aucun scrutin en cours.</span>
-              {foundVoteId ? <span>Veuillez-trouver ci-dessous les resultas du derrnier scrutin;</span> : null}
+              {foundVoteId && enabledVote
+                ?
+                <div className=''>
+                  <span>Veuillez-trouver ci-dessous les resultas du derrnier scrutin;</span>
+                  <p className='text-center text-lg italic font-normal'>
+                    {enabledVote.description}
+                  </p>
+                </div>
+                : null}
             </p>
             {
               foundVoteId
