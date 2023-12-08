@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import 'react-datetime-picker/dist/DateTimePicker.css';
 import 'react-calendar/dist/Calendar.css';
 import 'react-clock/dist/Clock.css';
 import { ConnectWalletProvider } from '@/config/connect-wallet-provider'

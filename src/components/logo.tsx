@@ -24,7 +24,7 @@ const Logo = ({ session }: LogoProps) => {
   )}>
    <div className='flex items-center gap-2 text-secondary-foreground'>
     <Image src={RnBlockIcon} className="w-10 h-10 bg-white p-1 rounded-full" alt="logo" />
-    <strong>Voting-System</strong>
+    <strong>Voting-FAA&rsquo;A</strong>
    </div>
   </Link>
  )

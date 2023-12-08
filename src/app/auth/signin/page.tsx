@@ -76,7 +76,7 @@ export default function SignInPage() {
                   onClick={() => open()}
                   pending={isConnecting}
                 >
-                  {!isConnected ? "Connecter au portefeuille" : "Déconnecter"}
+                  {!isConnected ? "Connecter au portefeuille" : "Se déconnecter"}
                 </ButtonWithPending>
               </li>
 

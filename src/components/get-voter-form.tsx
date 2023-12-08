@@ -78,17 +78,17 @@ export const GetVoterForm = () => {
        </FormItem>
       )}
      />
-     <ButtonWithPending size="sm" disabled={pending} className="w-full bg-primary-400/40 rounded-full transition duration-150 hover:bg-primary-300/40" pending={pending}>Submit</ButtonWithPending>
+     <ButtonWithPending size="sm" disabled={pending} variant="default" className="w-full rounded-full transition duration-150" pending={pending}>Submit</ButtonWithPending>
     </form>
    </Form>
    {
     foundVoter
     &&
-    <div className="text-white text-base flex flex-col items-start justify-center">
-     <span>IsRegistered : <strong className="text-primary-300">{String(foundVoter.isRegistered)}</strong></span>
-     <span>HasVoted: <strong className="text-primary-300">{String(foundVoter.hasVoted)}</strong></span>
-     <span>Role: <strong className="text-primary-300">{foundVoter.role ? "ADMIN" : "USER"}</strong></span>
-     <span>VoteChoice: <strong className="text-primary-300">{foundVoter.voteChoice ? String(foundVoter.voteChoice) : "Not yet."}</strong></span>
+    <div className="text-base flex flex-col items-start justify-center">
+     <span>IsRegistered : <strong className="text-primary">{String(foundVoter.isRegistered)}</strong></span>
+     <span>HasVoted: <strong className="text-primary">{String(foundVoter.hasVoted)}</strong></span>
+     <span>Role: <strong className="text-primary">{foundVoter.role ? "ADMIN" : "USER"}</strong></span>
+     <span>VoteChoice: <strong className="text-primary">{foundVoter.voteChoice ? String(foundVoter.voteChoice) : "Not yet."}</strong></span>
     </div>
    }
   </div>

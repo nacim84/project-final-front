@@ -86,7 +86,7 @@ export const GetVoteCommonForm = () => {
     foundVote
     &&
     <div className="text-base flex flex-col items-start justify-center">
-     <p className="truncate max-w-[25vw]">HashDescription : <strong className="text-fuchsia-300">{String(foundVote.hashDescription)}</strong></p>
+     <p className="truncate max-w-[25vw]">HashDescription : <strong className="text-primary">{String(foundVote.hashDescription)}</strong></p>
      <span>StartDate: <strong className="text-primary">{convertToDate(Number(foundVote.startDate))}</strong></span>
      <span>EndDate: <strong className="text-primary">{convertToDate(Number(foundVote.endDate))}</strong></span>
      <span>IsEnabled: <strong className="text-primary">{String(foundVote.isEnabled)}</strong></span>

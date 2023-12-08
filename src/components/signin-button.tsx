@@ -14,13 +14,12 @@ const SigninButton = () => {
   <>
    {path !== authSignInPath ?
     <Link href={authSignInPath} className={buttonVariants({ variant: "default", size: "xs", className: "flex items-center justify-center gap-2 px-4 whitespace-nowrap font-semibold" })}>
-     <span>Sign-in</span>
+     <span>Connexion</span>
      <LogIn className="w-4 h-4" />
     </Link>
     :
     null
    }
-
   </>
 
  )
