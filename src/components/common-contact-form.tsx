@@ -13,7 +13,7 @@ import { useToast } from './ui/use-toast';
 import { ButtonWithPending } from './ui/button-with-pending';
 import { Textarea } from './ui/textarea';
 import { TContactSchema, contactFormResolver } from '@/models/common.schema';
-import { sendEmail } from '@/server-actions/users';
+import { sendEmail } from '@/server-actions/email';
 
 export const CommonContactForm = () => {
   const { toast } = useToast();
@@ -28,7 +28,7 @@ export const CommonContactForm = () => {
   const pending = formContact.formState.isSubmitting;
 
   const sendEmailHandler = async (formData: TContactSchema) => {
-    const { flag } = await sendEmail(formData);
+    const { flag } = sendEmail(formData);
     if (flag) {
       toast({
         description: "Email sent successfully.",

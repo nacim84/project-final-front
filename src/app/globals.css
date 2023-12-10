@@ -179,11 +179,11 @@
 
 .react-datetime-picker__button:enabled:hover .react-datetime-picker__button__icon,
 .react-datetime-picker__button:enabled:focus .react-datetime-picker__button__icon {
-  stroke: #0078d7;
+  stroke: #4b4b4b;
 }
 
 .react-datetime-picker__button:disabled .react-datetime-picker__button__icon {
-  stroke: #6d6d6d;
+  stroke: #000000;
 }
 
 .react-datetime-picker__button svg {

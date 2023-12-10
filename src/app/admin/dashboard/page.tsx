@@ -4,11 +4,11 @@ import { Card } from '@/components/ui/card';
 import React, { useEffect, useState } from 'react';
 import { TallyVote } from '@/components/tally-vote';
 import { VotingVotersAdmin } from '@/components/voting-voters-admin';
-import { AllUsersTable } from '@/components/all-users-table';
-import { AllVotesTable } from '@/components/all-votes-table';
 import { getAllUsersFromDb } from '@/server-actions/users';
 import { getAllVotesFromDb } from '@/server-actions/votes';
 import { IUser, IVote } from '@/models/common.model';
+import { AllUsersTable } from '@/components/all-users-table';
+import { AllVotesTable } from '@/components/all-votes-table';
 
 const DashboardPage = () => {
 
