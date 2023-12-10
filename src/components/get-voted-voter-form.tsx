@@ -20,23 +20,26 @@ import { useState } from "react"
 import { contractAddress, resolutionsVotingAbi } from "@/constants/common.constants"
 import { IVoterContract } from "@/models/common.model"
 import { useAccount } from "wagmi"
+import { decryptAES } from "@/lib/utils"
 
 const formSchema = z.object({
- voteId: z.number().min(1, {
-  message: "Voting number must be greater than 1.",
- }),
+ voteId: z.coerce.number(),
  voterAddress: z.string().min(42, {
   message: "Voter address description must be at least 42 characters.",
  }),
-})
+});
 
-export const GetVotedVoterForm = () => {
+interface GetVotedVoterFormProps {
+ currentVoteId: number;
+}
+
+export const GetVotedVoterForm = ({ currentVoteId }: GetVotedVoterFormProps) => {
 
  const [foundVoter, setFoundVoter] = useState<IVoterContract | null>(null);
  const form = useForm<z.infer<typeof formSchema>>({
   resolver: zodResolver(formSchema),
   defaultValues: {
-   voteId: 1,
+   voteId: currentVoteId || 1,
    voterAddress: "",
   },
  });
@@ -76,7 +79,7 @@ export const GetVotedVoterForm = () => {
       render={({ field }) => (
        <FormItem>
         <FormControl>
-         <Input placeholder="Vote id" type="number" className="rounded-lg" {...field} />
+         <Input placeholder="Vote id" type="number" min="1" step="1" className="rounded-lg" {...field} />
         </FormControl>
         <FormMessage />
        </FormItem>
@@ -102,7 +105,7 @@ export const GetVotedVoterForm = () => {
     &&
     <div className="text-base flex flex-col items-start justify-center">
      <span>Vote : <strong className="text-primary">{foundVoter.hasVoted ? "Vous avez voté." : "Vous n'avez pas voté."}</strong></span>
-     <span>Choix de vote : <strong className="text-primary">{foundVoter.voteChoice ? String(foundVoter.voteChoice) : "Pas de vote."}</strong></span>
+     <span>Choix de vote : <strong className="text-primary">{foundVoter.voteChoice ? decryptAES(foundVoter.voteChoice) : "Pas de vote."}</strong></span>
     </div>
    }
   </div>

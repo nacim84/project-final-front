@@ -20,6 +20,7 @@ import { useState } from "react"
 import { contractAddress, resolutionsVotingAbi } from "@/constants/common.constants"
 import { IVoterContract } from "@/models/common.model"
 import { useAccount } from "wagmi"
+import { decryptAES } from "@/lib/utils"
 
 const formSchema = z.object({
  voterAddress: z.string().min(42, {
@@ -88,7 +89,7 @@ export const GetVoterForm = () => {
      <span>Enregistrement : <strong className="text-primary">{foundVoter.isRegistered ? "Vous êtes enregistré." : "Vous n'êtes pas enregistré."}</strong></span>
      <span>Vote : <strong className="text-primary">{foundVoter.hasVoted ? "Vous avez voté." : "Vous n'avez pas voté."}</strong></span>
      <span>Role : <strong className="text-primary">{foundVoter.role ? "Administrateur et électeur" : "Electeur"}</strong></span>
-     <span>Choix de vote : <strong className="text-primary">{foundVoter.voteChoice ? String(foundVoter.voteChoice) : "Pas de vote."}</strong></span>
+     <span>Choix de vote : <strong className="text-primary">{foundVoter.voteChoice ? decryptAES(foundVoter.voteChoice) : "Pas de vote."}</strong></span>
     </div>
    }
   </div>

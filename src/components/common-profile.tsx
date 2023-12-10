@@ -1,6 +1,6 @@
 "use client"
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import SuccessIcon from "../../public/svg/success-icon.svg"
 import FailureIcon from "../../public/svg/failure-icon.svg";
 import { Card } from './ui/card';
@@ -8,14 +8,15 @@ import CommonDialogVote from './common-dialog-vote';
 import { prepareWriteContract, writeContract, waitForTransaction } from '@wagmi/core';
 import { VotedEvent, contractAddress, resolutionsVotingAbi } from '@/constants/common.constants';
 import { BlockTag, parseAbiItem } from 'viem';
-import { usePublicClient } from 'wagmi';
+import { useAccount, usePublicClient } from 'wagmi';
 import { useToast } from './ui/use-toast';
 import Image from "next/image";
 import { CommonGetters } from './common-getters';
 import { IVote } from '@/models/common.model';
 import { decryptAES, encryptAES } from '@/lib/utils';
-import { useSession } from 'next-auth/react';
 import { useLocalStorage } from 'usehooks-ts';
+import { readContract } from '@wagmi/core';
+
 
 interface CommonProfileProps {
   enabledVote: IVote;
@@ -23,14 +24,30 @@ interface CommonProfileProps {
 
 export const CommonProfile = ({ enabledVote }: CommonProfileProps) => {
   const client = usePublicClient();
-  const { data: session } = useSession();
   const { toast } = useToast();
+  const account = useAccount();
+  const [foundVoteId, setFoundVoteId] = useState<number>(0);
   const [_, setVoteTransactionHash] = useLocalStorage<string>('VOTE_TRANSACTION_HASH', "");
 
+  const getVoteId = async () => {
+    try {
+      const voteId = await readContract({
+        address: contractAddress as `0x${string}`,
+        abi: resolutionsVotingAbi,
+        functionName: 'voteId',
+        account: account.address
+      });
+      setFoundVoteId(Number(voteId));
+    } catch (err) {
+      const error = err as Error;
+      console.log(error.message)
+    }
+  };
 
   const voteChoiceHandler = async (choice: string) => {
     try {
-      const encryptChoice = encryptAES(`${session.token} ${choice}`);
+      const encryptChoice = encryptAES(choice); // token[blank]choice
+      console.log("encryptChoice : ", encryptChoice);
       const { request } = await prepareWriteContract({
         address: contractAddress as `0x${string}`,
         abi: resolutionsVotingAbi,
@@ -43,7 +60,7 @@ export const CommonProfile = ({ enabledVote }: CommonProfileProps) => {
       const events = await getEvents();
 
       // Save the trasaction hash in localStorage
-      console.log(" transactionHash : " + events[0].transactionHash);
+      console.log("transactionHash : " + events[0].transactionHash);
       setVoteTransactionHash(events[0].transactionHash);
 
       toast({
@@ -87,9 +104,14 @@ export const CommonProfile = ({ enabledVote }: CommonProfileProps) => {
     );
     return events;
   };
+
+  useEffect(() => {
+    getVoteId();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <div className='flex flex-col gap-10 w-full'>
-      <CommonGetters />
+      <CommonGetters currentVoteId={foundVoteId} />
       <Card className="space-y-6 w-full h-full bg-primary-foreground min-w-[80vw] p-10 rounded-lg shadow-lg">
         <div className='flex flex-col items-center justify-center mx-auto gap-16'>
           <div className='flex flex-col gap-1 items-center justify-center'>

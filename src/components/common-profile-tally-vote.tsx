@@ -46,6 +46,8 @@ export const CommonProfileTallyVote = ({ enabledVote }: CommonProfileTallyVotePr
 
   const getResults = async () => {
     const events = await getEvents();
+    const decryptChoice = decryptAES(events.map(item => item.voteChoice)[0]);
+    console.log("decryptChoice : ", decryptChoice);
     events.map(item => {
       switch (decryptAES(item.voteChoice)) {
         case "POUR":
@@ -90,7 +92,7 @@ export const CommonProfileTallyVote = ({ enabledVote }: CommonProfileTallyVotePr
 
   return (
     <div className='flex flex-col gap-10 w-full'>
-      <CommonGetters />
+      <CommonGetters currentVoteId={foundVoteId} />
       <Card className="space-y-6 w-full h-full bg-primary-foreground min-w-[80vw] min-h-max p-10 rounded-lg shadow-lg">
         <div className='flex flex-col items-center justify-center mx-auto gap-16'>
           <div className='flex flex-col gap-20'>

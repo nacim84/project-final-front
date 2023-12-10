@@ -23,18 +23,20 @@ import { convertToDate } from "@/lib/utils"
 import { useAccount } from "wagmi"
 
 const formSchema = z.object({
- voteId: z.number().min(1, {
-  message: "Vote id must be greater than 1.",
- })
-})
+ voteId: z.coerce.number(),
+});
 
-export const GetVoteCommonForm = () => {
+interface GetVoteCommonFormProps {
+ currentVoteId: number;
+}
+
+export const GetVoteCommonForm = ({ currentVoteId }: GetVoteCommonFormProps) => {
 
  const [foundVote, setFoundVote] = useState<IVoteContract | null>(null);
  const form = useForm<z.infer<typeof formSchema>>({
   resolver: zodResolver(formSchema),
   defaultValues: {
-   voteId: 1
+   voteId: currentVoteId || 1
   },
  });
  const pending = form.formState.isSubmitting;
@@ -73,7 +75,7 @@ export const GetVoteCommonForm = () => {
       render={({ field }) => (
        <FormItem>
         <FormControl>
-         <Input placeholder="Vote id" type="number" className="rounded-lg" {...field} />
+         <Input placeholder="Vote id" type="number" min="1" step="1" className="rounded-lg" {...field} />
         </FormControl>
         <FormMessage />
        </FormItem>

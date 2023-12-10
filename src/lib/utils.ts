@@ -26,21 +26,19 @@ export const convertToDate = (timestampSeconds: number): string => {
 }
 
 // AES Encryption
-export const encryptAES = (dataToCrypt: string) => {
+export const encryptAES = (choiceVote: string) => {
+  console.log("choice to crypt : ", JSON.stringify(choiceVote));
   // Encrypt
-  const ciphertext = CryptoJS.AES.encrypt(dataToCrypt, NEXT_PUBLIC_AES_SECRET_KEY).toString();
-  console.log(ciphertext);
+  const dataToCrype = `${Math.floor(Math.random() * 10000000)},${choiceVote}`;
+  const ciphertext = CryptoJS.AES.encrypt(dataToCrype, NEXT_PUBLIC_AES_SECRET_KEY).toString();
   return ciphertext;
 }
 
-export const decryptAES = (dataToDecCrypt: string) => {
+export const decryptAES = (dataToDecCrypt: string): string => {
   // Decrypt
   const bytes = CryptoJS.AES.decrypt(dataToDecCrypt, NEXT_PUBLIC_AES_SECRET_KEY);
   var originalText = bytes.toString(CryptoJS.enc.Utf8);
-  console.log("originalText : ", originalText);
-  console.log("token + choiceVote array : ",  originalText.split(" ", 2));
-  const tokenChoiceVoteArray: Array<string> = originalText.split(" ", 2);
-  console.log("choiceVote : ", tokenChoiceVoteArray[1]);
+  const tokenChoiceVoteArray: Array<string> = originalText.split(",", 2);
   return tokenChoiceVoteArray[1];
 }
 

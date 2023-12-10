@@ -3,7 +3,6 @@
 import { cn } from '@/lib/utils';
 import React from 'react'
 import { Dialog, DialogContent, DialogTrigger } from './ui/dialog';
-import { CommonModal } from './common-modal';
 import ConfirmVoteDialog from './confirm-vote-dialog';
 
 interface CommonDialogVoteProps {
@@ -23,7 +22,7 @@ const CommonDialogVote = ({ text, className, action }: CommonDialogVoteProps) =>
     </button>
    </DialogTrigger>
    <DialogContent>
-    <CommonModal component={<ConfirmVoteDialog action={action} choice={text.toUpperCase()} />} />
+    <ConfirmVoteDialog action={action} choice={text.toUpperCase()} />
    </DialogContent>
   </Dialog>
  )

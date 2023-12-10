@@ -1,6 +1,7 @@
 import React from 'react'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table'
 import { IVote } from '@/models/common.model';
+import { convertToDate } from '@/lib/utils';
 
 interface AllVotesTableProps {
  data: IVote[]
@@ -33,7 +34,7 @@ export const AllVotesTable = ({ data }: AllVotesTableProps) => {
           <TableCell className="font-medium max-w-xs truncate">{row.endDate.toISOString()}</TableCell>
           <TableCell className="font-medium max-w-xs truncate">{row.title}</TableCell>
           <TableCell className="font-medium max-w-xs truncate">{row.description}</TableCell>
-          <TableCell className="font-medium max-w-xs truncate">{row.isEnabled}</TableCell>
+          <TableCell className="font-medium max-w-xs truncate">{String(row.isEnabled)}</TableCell>
          </TableRow>
         )
        }
