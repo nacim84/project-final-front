@@ -57,6 +57,7 @@ export const getAllUsersFromDb = async (): Promise<IResponseBack> => {
     id: user.id,
     firstName: user.firstName,
     lastName: user.lastName,
+    addressHash: user.addressHash,
     email: user.email,
     role: user.role
    }

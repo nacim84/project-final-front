@@ -105,7 +105,11 @@ export const CommonProfileTallyVote = ({ enabledVote }: CommonProfileTallyVotePr
                     {enabledVote.description}
                   </p>
                 </div>
-                : null}
+                :
+                <p className='text-center text-lg italic font-normal'>
+                  Les résultats du vote précédent ne sont pas encore disponible.
+                </p>
+              }
             </p>
             {
               foundVoteId

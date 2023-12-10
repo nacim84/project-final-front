@@ -11,7 +11,6 @@ const GlobalReportPage = () => {
 
   const client = usePublicClient();
   const [logs, setLogs] = useState<any[][]>([]);
-  const account = useAccount();
 
   const getAllEventsHandler = async () => {
     // VoteCreatedActivatedEvent;          // 0

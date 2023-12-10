@@ -23,7 +23,7 @@ export interface IUser {
  id?: string;
  firstName: string,
  lastName: string,
- address?: string;
+ addressHash?: string;
  email: string;
  role: EnumRole;
  image?: string;

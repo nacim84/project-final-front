@@ -6,6 +6,7 @@ import UserProfileButton from "./user-profile-button";
 import SigninButton from "./signin-button";
 import { getRequireNextAuthSession } from "@/lib/utils";
 
+
 export const Navbar = async () => {
  const session = await getRequireNextAuthSession();
 

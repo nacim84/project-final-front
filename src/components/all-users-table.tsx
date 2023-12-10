@@ -19,7 +19,7 @@ export const AllUsersTable = ({ data }: AllUsersTableProps) => {
         <TableHead className="font-semibold max-w-xs truncate">Prénom</TableHead>
         <TableHead className="font-semibold max-w-xs truncate">Nom</TableHead>
         <TableHead className="font-semibold max-w-xs truncate">Email</TableHead>
-        <TableHead className="font-semibold max-w-xs truncate">Adresse Wallet</TableHead>
+        <TableHead className="font-semibold max-w-xs truncate">Hash adresse</TableHead>
         <TableHead className="font-semibold max-w-xs truncate">Role</TableHead>
        </TableRow>
       </TableHeader>
@@ -30,7 +30,7 @@ export const AllUsersTable = ({ data }: AllUsersTableProps) => {
           <TableCell className="font-medium max-w-xs truncate">{row.firstName}</TableCell>
           <TableCell className="font-medium max-w-xs truncate">{row.lastName}</TableCell>
           <TableCell className="font-medium max-w-xs truncate">{row.email}</TableCell>
-          <TableCell className="font-medium max-w-xs truncate">{row.address}</TableCell>
+          <TableCell className="font-medium max-w-xs truncate">{row.addressHash}</TableCell>
           <TableCell className="font-medium max-w-xs truncate">{row.role}</TableCell>
          </TableRow>
         )
