@@ -87,9 +87,9 @@ export const GetVoterForm = () => {
     &&
     <div className="text-base flex flex-col items-start justify-center">
      <span>Enregistrement : <strong className="text-primary">{foundVoter.isRegistered ? "Vous êtes enregistré." : "Vous n'êtes pas enregistré."}</strong></span>
-     <span>Vote : <strong className="text-primary">{foundVoter.hasVoted ? "Vous avez voté." : "Vous n'avez pas voté."}</strong></span>
+     {/* <span>Vote : <strong className="text-primary">{foundVoter.hasVoted ? "Vous avez voté." : "Vous n'avez pas voté."}</strong></span> */}
      <span>Role : <strong className="text-primary">{foundVoter.role ? "Administrateur et électeur" : "Electeur"}</strong></span>
-     <span>Choix de vote : <strong className="text-primary">{foundVoter.voteChoice ? decryptAES(foundVoter.voteChoice) : "Pas de vote."}</strong></span>
+     {/* <span>Choix de vote : <strong className="text-primary">{foundVoter.voteChoice ? decryptAES(foundVoter.voteChoice) : "Pas de vote."}</strong></span> */}
     </div>
    }
   </div>
