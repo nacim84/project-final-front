@@ -13,7 +13,8 @@ declare module "next-auth" {
    email: string;
    role: EnumRole;
    image: string;
-  }
+  },
+  token: JWT;
  }
 
  interface User {

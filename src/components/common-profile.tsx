@@ -14,6 +14,8 @@ import Image from "next/image";
 import { CommonGetters } from './common-getters';
 import { IVote } from '@/models/common.model';
 import { decryptAES, encryptAES } from '@/lib/utils';
+import { useSession } from 'next-auth/react';
+import { useLocalStorage } from 'usehooks-ts';
 
 interface CommonProfileProps {
   enabledVote: IVote;
@@ -21,11 +23,14 @@ interface CommonProfileProps {
 
 export const CommonProfile = ({ enabledVote }: CommonProfileProps) => {
   const client = usePublicClient();
+  const { data: session } = useSession();
   const { toast } = useToast();
+  const [_, setVoteTransactionHash] = useLocalStorage<string>('VOTE_TRANSACTION_HASH', "");
+
 
   const voteChoiceHandler = async (choice: string) => {
     try {
-      const encryptChoice = encryptAES(choice);
+      const encryptChoice = encryptAES(`${session.token} ${choice}`);
       const { request } = await prepareWriteContract({
         address: contractAddress as `0x${string}`,
         abi: resolutionsVotingAbi,
@@ -36,6 +41,10 @@ export const CommonProfile = ({ enabledVote }: CommonProfileProps) => {
 
       await waitForTransaction({ hash: hash });
       const events = await getEvents();
+
+      // Save the trasaction hash in localStorage
+      console.log(" transactionHash : " + events[0].transactionHash);
+      setVoteTransactionHash(events[0].transactionHash);
 
       toast({
         description: `Voted successfully : ${events.map(
@@ -70,6 +79,7 @@ export const CommonProfile = ({ enabledVote }: CommonProfileProps) => {
     });
     const events = depositLogs.map(
       log => ({
+        transactionHash: log.transactionHash,
         voterAddress: log.args.voterAddress,
         voteChoice: log.args.voteChoice,
         voteId: log.args.voteId

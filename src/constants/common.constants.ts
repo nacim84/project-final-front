@@ -597,3 +597,9 @@ export const reportPath = "/report";
 
 // Auth
 export const authSignInPath = "/auth/signin";
+
+// Sepolia
+export const NEXT_PUBLIC_SEPOLIA_ETHERSCAN_BASE_URL = process.env.NEXT_PUBLIC_SEPOLIA_ETHERSCAN_BASE_URL;
+
+// Email
+export const NEXT_PUBLIC_RESEND_API_KEY = process.env.NEXT_PUBLIC_RESEND_API_KEY;

@@ -41,11 +41,13 @@
     "react-day-picker": "^8.9.1",
     "react-dom": "^18",
     "react-hook-form": "^7.48.2",
+    "resend": "^2.0.0",
     "siwe": "^2.1.4",
     "tailwind-merge": "^2.0.0",
     "tailwindcss-animate": "^1.0.7",
     "tailwindcss-typography": "^3.1.0",
     "ts-node": "^10.9.1",
+    "usehooks-ts": "^2.9.1",
     "viem": "^1.19.9",
     "wagmi": "^1.4.7",
     "zod": "^3.22.4"

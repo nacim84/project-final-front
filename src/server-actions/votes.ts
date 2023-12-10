@@ -35,7 +35,7 @@ export const addVoteToDb = async (formData: TVoteSchema): Promise<IResponseBack>
  }
 };
 
-export const deleteVoteFromDb = async (voteId: number) => {
+export const deleteVoteFromDb = async (voteId: number): Promise<IResponseBack> => {
  try {
   const deletedVote = await prisma.vote.delete(
    {
@@ -88,3 +88,25 @@ export const updateVoteToDb = async (id: number): Promise<IResponseBack> => {
   return { flag: false, error: `Updated failed, error : ${(err as PrismaClientKnownRequestError).message}` };
  }
 }
+
+export const getAllVotesFromDb = async (): Promise<IResponseBack> => {
+ try {
+  const votes = await prisma.vote.findMany();
+  const votesAdapter = votes.map((vote) => {
+   return {
+    id: vote.id,
+    startDate: vote.startDate,
+    endDate: vote.endDate,
+    title: vote.title,
+    description: vote.description,
+    isEnabled: vote.isEnabled
+
+   }
+  })
+  console.log(`Get all votes : ${votesAdapter}`)
+  return { flag: true, data: votesAdapter };
+ } catch (err) {
+  console.error(`Get all votes failed, error : `, (err as PrismaClientKnownRequestError).message);
+  return { flag: false, error: (err as PrismaClientKnownRequestError).message };
+ }
+};

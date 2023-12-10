@@ -85,7 +85,7 @@ export const authConfig = {
 
   async session({ session, token }) {
    const { user, ...restToken } = token;
-   const customSession = { ...session, user };
+   const customSession = { ...session, user, token };
    return customSession;
   },
  }

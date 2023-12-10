@@ -21,6 +21,7 @@ import { VoteCreatedActivatedEvent, contractAddress, profilePath, resolutionsVot
 import { BlockTag, keccak256, parseAbiItem, toHex } from 'viem';
 import { addVoteToDb } from '@/server-actions/votes';
 import { useRouter } from 'next/navigation';
+import { useLocalStorage } from 'usehooks-ts';
 
 export const VoteForm = () => {
   const client = usePublicClient();
@@ -61,7 +62,6 @@ export const VoteForm = () => {
 
       // 2 - Create vote in DB
       await addVoteToDb(formData);
-
       toast({
         description: `Vote add successfully : ${events.map(
           e => `VoteId : ${Number(e.voteId)}, StartDate : ${Number(e.startDate)}, EndDate : ${Number(e.endDate)}.`)}`,
@@ -89,6 +89,7 @@ export const VoteForm = () => {
     });
     const events = depositLogs.map(
       log => ({
+        transactionHash: log.transactionHash,
         hashDescription: log.args.hashDescription,
         voteId: log.args.voteId,
         startDate: log.args.startDate,

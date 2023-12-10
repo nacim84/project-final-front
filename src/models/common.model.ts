@@ -23,7 +23,7 @@ export interface IUser {
  id?: string;
  firstName: string,
  lastName: string,
- address: string;
+ address?: string;
  email: string;
  role: EnumRole;
  image?: string;
@@ -44,7 +44,7 @@ export interface IVote {
 
 export interface IResponseBack {
  flag: boolean;
- data?: IVote | IUser | any;
+ data?: IVote | IVote[] | IUser | IUser[] | any;
  error?: string | null;
 }
 

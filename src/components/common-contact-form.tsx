@@ -21,7 +21,7 @@ export const CommonContactForm = () => {
     resolver: contactFormResolver,
     defaultValues: {
       receiverEmail: "",
-      object: "",
+      subject: "",
       comment: "",
     },
   });
@@ -66,11 +66,11 @@ export const CommonContactForm = () => {
           />
           <FormField
             control={formContact.control}
-            name="object"
+            name="subject"
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <Input className='text-base h-12' placeholder="Object..." {...field} />
+                  <Input className='text-base h-12' placeholder="Objet..." {...field} />
                 </FormControl>
                 <FormMessage className="text-sm italic" />
               </FormItem>

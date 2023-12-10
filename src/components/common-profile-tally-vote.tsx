@@ -4,7 +4,7 @@ import { Card } from './ui/card';
 import { MoveRight, Plus } from 'lucide-react';
 import { buttonVariants } from './ui/button';
 import Link from 'next/link';
-import { VotedEvent, adminVotePath, contractAddress, reportPath, resolutionsVotingAbi } from '@/constants/common.constants';
+import { NEXT_PUBLIC_SEPOLIA_ETHERSCAN_BASE_URL, VotedEvent, adminVotePath, contractAddress, reportPath, resolutionsVotingAbi } from '@/constants/common.constants';
 import { CommonGetters } from './common-getters';
 import { useSession } from 'next-auth/react';
 import { useAccount, usePublicClient } from 'wagmi';
@@ -13,6 +13,7 @@ import { useEffect, useState } from 'react';
 import { decryptAES } from '@/lib/utils';
 import { readContract } from '@wagmi/core';
 import { IVote } from '@/models/common.model';
+import { useLocalStorage } from 'usehooks-ts';
 
 interface CommonProfileTallyVoteProps {
   enabledVote: IVote;
@@ -26,6 +27,7 @@ export const CommonProfileTallyVote = ({ enabledVote }: CommonProfileTallyVotePr
   const [tallyVoteAbstention, setTallyVoteAbstention] = useState<string[]>([]);
   const [foundVoteId, setFoundVoteId] = useState<number>(0);
   const account = useAccount();
+  const [voteTransactionHash] = useLocalStorage<string>('VOTE_TRANSACTION_HASH', "");
 
   const getVoteId = async () => {
     try {
@@ -35,7 +37,7 @@ export const CommonProfileTallyVote = ({ enabledVote }: CommonProfileTallyVotePr
         functionName: 'voteId',
         account: account.address
       });
-      const hupdatedVite = setFoundVoteId(Number(voteId));
+      setFoundVoteId(Number(voteId));
     } catch (err) {
       const error = err as Error;
       console.log(error.message)
@@ -98,6 +100,7 @@ export const CommonProfileTallyVote = ({ enabledVote }: CommonProfileTallyVotePr
                 ?
                 <div className=''>
                   <span>Veuillez-trouver ci-dessous les resultas du derrnier scrutin;</span>
+                  {voteTransactionHash && <strong>Voici le lien de la transaction de votre vote : <a>{NEXT_PUBLIC_SEPOLIA_ETHERSCAN_BASE_URL}{voteTransactionHash}</a></strong>}
                   <p className='text-center text-lg italic font-normal'>
                     {enabledVote.description}
                   </p>

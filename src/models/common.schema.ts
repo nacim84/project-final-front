@@ -42,7 +42,7 @@ const contactSchema = z.object({
  receiverEmail: z.string().email().min(4, {
   message: "Receiver email is required.",
  }),
- object: z.string().min(4, {
+ subject: z.string().min(4, {
   message: "Object must be at least 4 characters.",
  }),
  comment: z.string().min(10, {

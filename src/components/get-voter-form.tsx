@@ -85,10 +85,10 @@ export const GetVoterForm = () => {
     foundVoter
     &&
     <div className="text-base flex flex-col items-start justify-center">
-     <span>IsRegistered : <strong className="text-primary">{String(foundVoter.isRegistered)}</strong></span>
-     <span>HasVoted: <strong className="text-primary">{String(foundVoter.hasVoted)}</strong></span>
-     <span>Role: <strong className="text-primary">{foundVoter.role ? "ADMIN" : "USER"}</strong></span>
-     <span>VoteChoice: <strong className="text-primary">{foundVoter.voteChoice ? String(foundVoter.voteChoice) : "Not yet."}</strong></span>
+     <span>Enregistrement : <strong className="text-primary">{foundVoter.isRegistered ? "Vous êtes enregistré." : "Vous n'êtes pas enregistré."}</strong></span>
+     <span>Vote : <strong className="text-primary">{foundVoter.hasVoted ? "Vous avez voté." : "Vous n'avez pas voté."}</strong></span>
+     <span>Role : <strong className="text-primary">{foundVoter.role ? "Administrateur et électeur" : "Electeur"}</strong></span>
+     <span>Choix de vote : <strong className="text-primary">{foundVoter.voteChoice ? String(foundVoter.voteChoice) : "Pas de vote."}</strong></span>
     </div>
    }
   </div>

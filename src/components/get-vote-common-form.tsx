@@ -86,10 +86,10 @@ export const GetVoteCommonForm = () => {
     foundVote
     &&
     <div className="text-base flex flex-col items-start justify-center">
-     <p className="truncate max-w-[25vw]">HashDescription : <strong className="text-primary">{String(foundVote.hashDescription)}</strong></p>
-     <span>StartDate: <strong className="text-primary">{convertToDate(Number(foundVote.startDate))}</strong></span>
-     <span>EndDate: <strong className="text-primary">{convertToDate(Number(foundVote.endDate))}</strong></span>
-     <span>IsEnabled: <strong className="text-primary">{String(foundVote.isEnabled)}</strong></span>
+     <p className="truncate max-w-[25vw]">Hash description : <strong className="text-primary">{String(foundVote.hashDescription)}</strong></p>
+     <span>Date de début : <strong className="text-primary">{convertToDate(Number(foundVote.startDate))}</strong></span>
+     <span>Date de fin : <strong className="text-primary">{convertToDate(Number(foundVote.endDate))}</strong></span>
+     <span>Activation : <strong className="text-primary">{foundVote.isEnabled ? "Scrutin en cours..." : "Scrutin clôturé."}</strong></span>
     </div>
    }
   </div>
